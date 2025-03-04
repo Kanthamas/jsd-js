@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+		<script
+			src="./script.js"
+			defer
+		></script>
+		<title>JavaScript on Web Browser</title>
+	</head>
+	<body class="grid place-content-center gap-8 h-screen w-full">
+		<button
+			id="cta-btn"
+			type="button"
+			onclick="showMessage()"
+			class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-lg px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+		>
+			I'm an awesome button 😎
+		</button>
+
+		<button
+			id="btn-secondary"
+			type="button"
+			onclick="alert('Hello, JavaScript!')"
+			onmouseover="console.log('mouse hover')"
+			class="text-white bg-violet-700 hover:bg-violet-800 focus:outline-none focus:ring-4 focus:ring-violet-300 font-medium rounded-full text-lg px-5 py-2.5 text-center me-2 mb-2 dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800"
+		>
+			I'm another awesome button 🤩
+		</button>
+	</body>
+</html>
