@@ -23,10 +23,14 @@ function divide(num1, num2) {
 // Exercise 03-2: Create a Validation Function for Inputs
 
 function validateInputs(num1, num2) {
-	if (typeof num1 !== "number" || typeof num2 !== "number") {
+	if (!isNumber(num1) || !isNumber(num2)) {
 		return "Both inputs must be numbers";
 	}
 	return null;
+
+	function isNumber(value) {
+		return typeof value === "number" && !isNaN(value);
+	}
 }
 
 // Exercise 03-3: Create a Calculator Function to Combine the Above Functions
