@@ -74,3 +74,6 @@ const limitedNumbers = numberGenerator(5);
 for (let num of limitedNumbers) {
 	console.log(num);
 } */
+
+
+  
