@@ -1,20 +1,20 @@
 "use strict";
 
-// function generateRandomNumber(max) {
-// 	if (!isNumber(max) || max < 1) {
-// 		return `Invalid input`;
-// 	}
-// 	return Math.floor(Math.random() * max) + 1;
-// }
+function generateRandomNumber(max) {
+	if (!isNumber(max) || max < 1) {
+		return `Invalid input`;
+	}
+	return Math.floor(Math.random() * max) + 1;
+}
 
-// function isNumber(value) {
-// 	return typeof value === "number" && !isNaN(value);
-// }
+function isNumber(value) {
+	return typeof value === "number" && !isNaN(value);
+}
 
 // Example usage:
-// const max = 10;
-// const randomNumber = generateRandomNumber(max);
-// console.log(randomNumber); // Outputs a random number between 1 and 10
+const max = 10;
+const randomNumber = generateRandomNumber(max);
+console.log(randomNumber); // Outputs a random number between 1 and 10
 
 // Capitalize the first letter of a given string
 // function capitalize(str) {
