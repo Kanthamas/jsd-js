@@ -17,13 +17,45 @@ The data for the products is provided in an array of objects, where each object 
 
 ```js
 products = [
-  { id: 1, name: "Laptop", price: 1000, category: "Electronics", rating: 4.5 },
-  { id: 2, name: "Smartphone", price: 700, category: "Electronics", rating: 4.2 },
-  { id: 3, name: "Tablet", price: 300, category: "Electronics", rating: 3.8 },
-  { id: 4, name: "Headphones", price: 150, category: "Accessories", rating: 4.0 },
-  { id: 5, name: "Smartwatch", price: 250, category: "Electronics", rating: 4.8 },
-  { id: 6, name: "Wireless Charger", price: 50, category: "Accessories", rating: 4.3 },
-  { id: 7, name: "Keyboard", price: 80, category: "Accessories", rating: 3.9 },
-  { id: 8, name: "Camera", price: 500, category: "Electronics", rating: 4.1 },
-]
+	{ id: 1, name: "Laptop", price: 1000, category: "Electronics", rating: 4.5 },
+	{
+		id: 2,
+		name: "Smartphone",
+		price: 700,
+		category: "Electronics",
+		rating: 4.2,
+	},
+	{ id: 3, name: "Tablet", price: 300, category: "Electronics", rating: 3.8 },
+	{
+		id: 4,
+		name: "Headphones",
+		price: 150,
+		category: "Accessories",
+		rating: 4.0,
+	},
+	{
+		id: 5,
+		name: "Smartwatch",
+		price: 250,
+		category: "Electronics",
+		rating: 4.8,
+	},
+	{
+		id: 6,
+		name: "Wireless Charger",
+		price: 50,
+		category: "Accessories",
+		rating: 4.3,
+	},
+	{ id: 7, name: "Keyboard", price: 80, category: "Accessories", rating: 3.9 },
+	{ id: 8, name: "Camera", price: 500, category: "Electronics", rating: 4.1 },
+];
 ```
+
+## Please input your answer below
+
+**The top 3 cheapest products are:**
+
+1. // product 1
+2. // product 2
+3. // product 3
