@@ -11,21 +11,15 @@ let y = 0; // Start at A (0,0) -> [row][col]
 const moves = [];
 moves.push(board[x][y]); // A
 
-// Right to B
+// Move Right to B
 y++;
 moves.push(board[x][y]); // B
 
-// Right to C
-y++;
-moves.push(board[x][y]); // C
+// Move Right to C
 
-// Down to F
-x++;
-moves.push(board[x][y]); // F
+// Move Down to F
 
 // Move left to E
-y--;
-moves.push(board[x][y]); // E
 
 console.log("Path:", moves.join(" → "));
 // Output: Path: A → B → C → F → E
