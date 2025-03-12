@@ -1,5 +1,4 @@
 "use strict";
-
 const board = [
 	["A", "B", "C"],
 	["D", "E", "F"],
@@ -13,23 +12,27 @@ const moves = [];
 moves.push(board[x][y]); // Start at A
 
 // Define movement functions
+// Move right (increase column index)
 function moveRight() {
-	y++; // Move right (increase column index)
+	y++; 
 	moves.push(board[x][y]);
 }
 
+// Move left (decrease column index)
 function moveLeft() {
-	y--; // Move left (decrease column index)
+	y--; 
 	moves.push(board[x][y]);
 }
 
+// Move up (decrease row index)
 function moveUp() {
-	x--; // Move up (decrease row index)
+	x--; 
 	moves.push(board[x][y]);
 }
 
+// Move down (increase row index)
 function moveDown() {
-	x++; // Move down (increase row index)
+	x++; 
 	moves.push(board[x][y]);
 }
 

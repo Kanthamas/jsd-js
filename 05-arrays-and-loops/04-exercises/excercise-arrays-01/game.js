@@ -16,10 +16,16 @@ y++;
 moves.push(board[x][y]); // B
 
 // Move Right to C
+y++;
+moves.push(board[x][y]);
 
 // Move Down to F
+x++;
+moves.push(board[x][y]);
 
 // Move left to E
+y--;
+moves.push(board[x][y]);
 
 console.log("Path:", moves.join(" → "));
 // Output: Path: A → B → C → F → E
