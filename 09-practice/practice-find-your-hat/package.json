@@ -1,0 +1,19 @@
+{
+	"name": "practice-find-your-hat",
+	"version": "1.0.0",
+	"description": "JS Assessment",
+	"keywords": [
+		"JavaScript"
+	],
+	"license": "ISC",
+	"author": "",
+	"type": "commonjs",
+	"main": "app.js",
+	"scripts": {
+		"dev": "node app.js"
+	},
+	"dependencies": {
+		"clear-screen": "^1.0.0",
+		"prompt-sync": "^4.2.0"
+	}
+}
