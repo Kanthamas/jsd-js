@@ -12,7 +12,7 @@ class Field {
 		this.field = field;
 		this.positionRow = 0;
 		this.positionCol = 0;
-		this.field[0][0] = pathCharacter;
+		this.field[this.positionCol][this.positionRow] = pathCharacter;
 	}
 
 	print() {
