@@ -8,9 +8,9 @@
 	"license": "ISC",
 	"author": "",
 	"type": "commonjs",
-	"main": "app.js",
+	"main": "main.js",
 	"scripts": {
-		"dev": "node app.js"
+		"dev": "node soln-random-all.js"
 	},
 	"dependencies": {
 		"clear-screen": "^1.0.0",

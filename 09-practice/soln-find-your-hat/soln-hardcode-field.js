@@ -1,0 +1,115 @@
+"use strict";
+const prompt = require("prompt-sync")({ sigint: true });
+const clear = require("clear-screen");
+
+const hat = "^";
+const hole = "O";
+const fieldCharacter = "░";
+const pathCharacter = "*";
+
+class Field {
+	constructor(field = [[]]) {
+		this.field = field;
+		this.positionRow = 0;
+		this.positionCol = 0;
+		this.field[0][0] = pathCharacter;
+	}
+
+	print() {
+		clear();
+		const displayMap = this.field.map((row) => row.join("")).join("\n");
+		console.log(displayMap);
+	}
+
+	moveRight() {
+		this.positionRow += 1;
+	}
+
+	moveLeft() {
+		this.positionRow -= 1;
+	}
+
+	moveUp() {
+		this.positionCol -= 1;
+	}
+
+	moveDown() {
+		this.positionCol += 1;
+	}
+
+	isInBounds() {
+		return (
+			this.positionRow >= 0 &&
+			this.positionCol >= 0 &&
+			this.positionRow < this.field.length &&
+			this.positionCol < this.field[0].length
+		);
+	}
+
+	isHat() {
+		return this.field[this.positionCol][this.positionRow] === hat;
+	}
+
+	isHole() {
+		return this.field[this.positionCol][this.positionRow] === hole;
+	}
+
+	askPlayer() {
+		const answer = prompt(
+			"Which direction do you want to move (U/D/L/R)? "
+		).toLowerCase();
+
+		switch (answer) {
+			case "u":
+				this.moveUp();
+				break;
+			case "d":
+				this.moveDown();
+				break;
+			case "l":
+				this.moveLeft();
+				break;
+			case "r":
+				this.moveRight();
+				break;
+			default:
+				console.log("Invalid input. Please enter U, D, L, or R.");
+				return this.askPlayer(); // Recursively call if invalid input
+		}
+	}
+
+	play() {
+		let playing = true;
+
+		while (playing) {
+			this.print();
+			this.askPlayer();
+
+			if (!this.isInBounds()) {
+				console.log("😅 Oops! You moved out of bounds!");
+				playing = false;
+			} else if (this.isHole()) {
+				console.log("😭 You fell down a hole!");
+				playing = false;
+			} else if (this.isHat()) {
+				console.log(`🤩 Congratulations! You've found your hat! 🎉`);
+				playing = false;
+			} else {
+				this.field[this.positionCol][this.positionRow] = pathCharacter;
+			}
+		}
+	}
+}
+
+// Hardcoded field setup (5x5 grid)
+const hardcodedField = [
+	[pathCharacter, fieldCharacter, fieldCharacter, hole, fieldCharacter],
+	[fieldCharacter, hole, fieldCharacter, fieldCharacter, fieldCharacter],
+	[fieldCharacter, fieldCharacter, fieldCharacter, fieldCharacter, hole],
+	[hole, fieldCharacter, fieldCharacter, fieldCharacter, fieldCharacter],
+	[fieldCharacter, fieldCharacter, fieldCharacter, fieldCharacter, hat],
+];
+
+// Game Mode ON
+const newGame = new Field(hardcodedField);
+newGame.play();
