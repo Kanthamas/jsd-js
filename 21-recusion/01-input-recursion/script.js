@@ -9,11 +9,11 @@ function askUser() {
 		return;
 	}
 
+	attempts++;
+
 	let input = prompt(
 		`Attempt ${attempts}/${maxAttempts}: Enter a number greater than 10:`
 	);
-
-	attempts++;
 
 	if (input === null) return;
 
@@ -22,7 +22,7 @@ function askUser() {
 			"result"
 		).textContent = `Thank you! You entered: ${input}`;
 	} else {
-		askUser(); // Recursively Call
+		askUser(); // Recursively Call for User Input
 	}
 }
 

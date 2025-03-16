@@ -55,3 +55,10 @@ const topCheapElectronics = products
 	.slice(0, 3);
 
 console.log(topCheapElectronics);
+/* Output:
+[
+	{ name: "Smartwatch", price: 250, rating: 4.8 },
+	{ name: "Camera", price: 500, rating: 4.1 },
+	{ name: "Smartphone", price: 700, rating: 4.2 },
+]; 
+*/
