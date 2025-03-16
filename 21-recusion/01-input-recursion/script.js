@@ -4,7 +4,8 @@ const maxAttempts = 3;
 
 function askUser() {
 	if (attempts >= maxAttempts) {
-		document.getElementById("result").textContent = "Max attempts reached!";
+		document.getElementById("result").textContent =
+			"😅 Sorry! You've reached the maximum attempt.";
 		document.getElementById("askButton").disabled = true;
 		return;
 	}
@@ -20,7 +21,7 @@ function askUser() {
 	if (parseInt(input) > 10) {
 		document.getElementById(
 			"result"
-		).textContent = `Thank you! You entered: ${input}`;
+		).textContent = `😃 Thank you! You entered: ${input}`;
 	} else {
 		askUser(); // Recursively Call for User Input
 	}
