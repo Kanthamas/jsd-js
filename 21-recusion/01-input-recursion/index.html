@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>JavaScript</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: sans-serif;
+				font-weight: 500;
+				font-size: 1.25rem;
+				color: #0d3b66;
+			}
+
+			button {
+				margin: 2rem;
+				padding: 0.5rem 2rem;
+				border: none;
+				border-radius: 2rem;
+				cursor: pointer;
+				font-weight: 600;
+				box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+			}
+
+			button:hover {
+				scale: 1.05;
+			}
+
+			button:hover:disabled {
+				scale: 1;
+			}
+
+			#askButton {
+				color: #f4d35e;
+				background-color: #0d3b66;
+			}
+
+			#askButton:disabled {
+				color: #0d3b66;
+				background-color: lightgray;
+				cursor: not-allowed;
+			}
+
+			#resetButton {
+				color: #0d3b66;
+				background-color: #f4d35e;
+			}
+
+			p {
+				margin: 2rem;
+				padding: 1rem;
+				outline: #f4d35e solid 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<button
+			id="askButton"
+			onclick="askUser()"
+		>
+			Enter Number
+		</button>
+		<button
+			id="resetButton"
+			onclick="reset()"
+		>
+			Reset
+		</button>
+		<p id="result"></p>
+		<script src="./script.js"></script>
+	</body>
+</html>
