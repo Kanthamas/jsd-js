@@ -12,16 +12,16 @@ class Field {
 		this.field = field;
 		this.positionRow = pathCharacterRow;
 		this.positionCol = pathCharacterCol;
-		this.field[this.positionCol][this.positionRow] = pathCharacter;
+		this.field[this.positionRow][this.positionCol] = pathCharacter;
 	}
 
 	static generateField(rows, cols, percentage = 0.2) {
-		let field = new Array(rows);
+		// Place field //
+		let field = Array.from({ length: rows }, () =>
+			Array(cols).fill(fieldCharacter)
+		);
 
-		for (let row = 0; row < rows; row++) {
-			field[row] = new Array(cols).fill(fieldCharacter);
-		}
-
+		// Map 2D array //
 		let availablePositions = [];
 
 		for (let row = 0; row < rows; row++) {
@@ -30,42 +30,34 @@ class Field {
 			}
 		}
 
-		/* 	console.log(
-			"Available positions BEFORE shuffle:",
-			availablePositions.length,
-			availablePositions.slice(0, 5)
-		); */
+		// Fisher-Yates (Durstenfeld) shuffle algorithm //
+		const shuffleArray = (array) => {
+			for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+		};
 
-		for (let i = availablePositions.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[availablePositions[i], availablePositions[j]] = [
-				availablePositions[j],
-				availablePositions[i],
-			];
-		}
+		shuffleArray(availablePositions);
 
-		/* 	console.log(
-			"Available positions AFTER shuffle:",
-			availablePositions.length,
-			availablePositions.slice(0, 5)
-		); */
-
-		const holeCount = Math.floor(rows * cols * percentage);
+		// Place holes //
+		let holeCount = Math.floor(rows * cols * percentage);
 
 		for (let i = 0; i < holeCount && i < availablePositions.length; i++) {
-			const { row, col } = availablePositions[i];
+			let { row, col } = availablePositions[i];
 			field[row][col] = hole;
 		}
 
+		// Place hat //
 		let hatRow, hatCol;
 		do {
-			const hatIndex = Math.floor(Math.random() * availablePositions.length);
-			hatRow = availablePositions[hatIndex].row;
-			hatCol = availablePositions[hatIndex].col;
+			let hatIndex = Math.floor(Math.random() * availablePositions.length);
+			({ row: hatRow, col: hatCol } = availablePositions[hatIndex]);
 		} while (field[hatRow][hatCol] === hole);
 
 		field[hatRow][hatCol] = hat;
 
+		// Return PathCharacter position [row][col]
 		let pathCharacterRow, pathCharacterCol;
 		do {
 			const pathCharacterIndex = Math.floor(
@@ -83,46 +75,27 @@ class Field {
 
 	print() {
 		clear();
-		const displayMap = this.field
-			.map((row) => {
-				return row.join("");
-			})
-			.join("\n");
-		console.log(displayMap);
-	}
-
-	moveRight() {
-		this.positionRow += 1;
-	}
-
-	moveLeft() {
-		this.positionRow -= 1;
+		console.log(this.field.map((row) => row.join("")).join("\n"));
 	}
 
 	moveUp() {
-		this.positionCol -= 1;
+		this.positionRow--;
 	}
 
 	moveDown() {
-		this.positionCol += 1;
+		this.positionRow++;
 	}
 
-	instructions() {
-		console.log(
-			`\nLet's find your ${hat}!
-      \nINSTRUCTIONS:
-      \nType: U, D, L, R\n(Up, Down, Left, Right)
-      \nThen press ENTER to find the ${hat}\nOr press Ctrl + C to exit.
-      \nEnjoy Your Journey!`
-		);
+	moveLeft() {
+		this.positionCol--;
 	}
 
-	askPlayer() {
-		const answer = prompt(
-			`Which direction do you want to move ▶ `
-		).toLowerCase();
+	moveRight() {
+		this.positionCol++;
+	}
 
-		switch (answer) {
+	move(direction) {
+		switch (direction) {
 			case "u":
 				this.moveUp();
 				break;
@@ -136,9 +109,19 @@ class Field {
 				this.moveRight();
 				break;
 			default:
-				console.log("Invalid input. Please enter U, D, L, or R.");
-				return this.askPlayer(); // Recursively call if invalid input
+				console.log("Invalid input. Use U, D, L, or R.");
 		}
+	}
+
+	instructions() {
+		console.log(`\nFind your ${hat}!
+Type: U, D, L, R (Up, Down, Left, Right)
+Press ENTER to move. Ctrl+C to exit.\n`);
+	}
+
+	askPlayer() {
+		let answer = prompt("Which direction do you want to move ▶ ").toLowerCase();
+		this.move(answer);
 	}
 
 	isInBounds() {
@@ -151,11 +134,11 @@ class Field {
 	}
 
 	isHat() {
-		return this.field[this.positionCol][this.positionRow] === hat;
+		return this.field[this.positionRow][this.positionCol] === hat;
 	}
 
 	isHole() {
-		return this.field[this.positionCol][this.positionRow] === hole;
+		return this.field[this.positionRow][this.positionCol] === hole;
 	}
 
 	play() {
@@ -167,16 +150,16 @@ class Field {
 			this.askPlayer();
 
 			if (!this.isInBounds()) {
-				console.log(`😅 Oops! Out of bounds!`);
+				console.log("😅 Oops! Out of bounds!");
 				playing = false;
 			} else if (this.isHole()) {
-				console.log(`😭 You fell down a ${hole}!`);
+				console.log("😭 You fell down a hole!");
 				playing = false;
 			} else if (this.isHat()) {
 				console.log(`🤩 Congratulations! 🎉\nYou've found your ${hat} ✅`);
 				playing = false;
 			} else {
-				this.field[this.positionCol][this.positionRow] = pathCharacter;
+				this.field[this.positionRow][this.positionCol] = pathCharacter;
 			}
 		}
 	}

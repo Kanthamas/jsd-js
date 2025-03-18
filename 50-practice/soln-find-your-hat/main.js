@@ -1,6 +1,7 @@
 "use strict";
 const prompt = require("prompt-sync")({ sigint: true }); // This sends a SIGINT, or “signal interrupt” message indicating that a user wants to exit a program by press Crtl+c
 const clear = require("clear-screen"); //every turn clear the screen that meant you will not get new field in time you choose the direction
+
 // const hat = "^";
 // const hole = "O";
 // const fieldCharacter = "░";
@@ -15,111 +16,95 @@ class Field {
 		this.field = field;
 		this.positionRow = 0;
 		this.positionCol = 0;
-		this.field[this.positionCol][this.positionRow] = pathCharacter;
+		this.field[this.positionRow][this.positionCol] = pathCharacter;
 	}
 
 	static generateField(rows, cols, percentage = 0.2) {
-		let field = new Array(rows);
+		// Place field //
+		let field = Array.from({ length: rows }, () =>
+			Array(cols).fill(fieldCharacter)
+		);
 
-		for (let row = 0; row < rows; row++) {
-			field[row] = new Array(cols).fill(fieldCharacter);
-		}
-
+		// Map 2D array //
 		let availablePositions = [];
 
 		for (let row = 0; row < rows; row++) {
 			for (let col = 0; col < cols; col++) {
 				if (
-					!(
-						(row === 0 && col === 0) ||
-						(row === 0 && col === 1) ||
-						(row === 1 && col === 0)
-					)
+					!(row === 0 && col === 0) &&
+					!(row === 0 && col === 1) &&
+					!(row === 1 && col === 0)
 				) {
 					availablePositions.push({ row, col });
 				}
 			}
 		}
 
-		for (let row = availablePositions.length - 1; row > 0; row--) {
-			const col = Math.floor(Math.random() * (row + 1));
-			[availablePositions[row], availablePositions[col]] = [
-				availablePositions[col],
-				availablePositions[row],
-			];
-		}
+		// console.log(availablePositions);
 
-		const holeCount = Math.floor(rows * cols * percentage);
-		for (
-			let index = 0;
-			index < holeCount && index < availablePositions.length;
-			index++
-		) {
-			const { row, col } = availablePositions[index];
+		// Fisher-Yates (Durstenfeld) shuffle algorithm //
+		const shuffleArray = (array) => {
+			for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+		};
+
+		shuffleArray(availablePositions);
+
+		// console.log("-".repeat(30));
+		// console.log(availablePositions);
+
+		// Place holes //
+		let holeCount = Math.floor(rows * cols * percentage);
+
+		for (let i = 0; i < holeCount && i < availablePositions.length; i++) {
+			let { row, col } = availablePositions[i];
 			field[row][col] = hole;
+			// console.log([row, col]);
 		}
 
+		// Place hat //
 		let hatRow, hatCol;
 		do {
-			const hatIndex = Math.floor(Math.random() * availablePositions.length);
-			hatRow = availablePositions[hatIndex].row;
-			hatCol = availablePositions[hatIndex].col;
+			let hatIndex = Math.floor(Math.random() * availablePositions.length);
+			({ row: hatRow, col: hatCol } = availablePositions[hatIndex]);
 		} while (
 			hatRow === 0 ||
 			hatRow === rows - 1 ||
 			hatCol === 0 ||
 			hatCol === cols - 1 ||
-			field[hatRow][hatCol] === hole ||
-			(hatRow === 0 && hatCol === 0)
+			field[hatRow][hatCol] === hole
 		);
 
 		field[hatRow][hatCol] = hat;
-
+		// console.log("hat", [hatRow, hatCol]);
 		return field;
 	}
 
 	print() {
 		clear();
-		const displayMap = this.field
-			.map((row) => {
-				return row.join("");
-			})
-			.join("\n");
-		console.log(displayMap);
-	}
-
-	moveRight() {
-		this.positionRow += 1;
-	}
-
-	moveLeft() {
-		this.positionRow -= 1;
+		console.log(this.field.map((row) => row.join("")).join("\n"));
 	}
 
 	moveUp() {
-		this.positionCol -= 1;
+		this.positionRow--;
 	}
 
 	moveDown() {
-		this.positionCol += 1;
+		this.positionRow++;
 	}
 
-	instructions() {
-		console.log(
-			`\nLet's find your ${hat}!
-      \nINSTRUCTIONS:
-      \nType: U, D, L, R\n(Up, Down, Left, Right)
-      \nThen press ENTER to find the ${hat}\nOr press Ctrl + C to exit.
-      \nEnjoy Your Journey!`
-		);
+	moveLeft() {
+		this.positionCol--;
 	}
 
-	askPlayer() {
-		const answer = prompt(
-			`Which direction do you want to move ▶ `
-		).toLowerCase();
+	moveRight() {
+		this.positionCol++;
+	}
 
-		switch (answer) {
+	move(direction) {
+		switch (direction) {
 			case "u":
 				this.moveUp();
 				break;
@@ -133,9 +118,19 @@ class Field {
 				this.moveRight();
 				break;
 			default:
-				console.log("Invalid input. Please enter U, D, L, or R.");
-				return this.askPlayer(); // Recursively call if invalid input
+				console.log("Invalid input. Use U, D, L, or R.");
 		}
+	}
+
+	instructions() {
+		console.log(`\nFind your ${hat}!
+Type: U, D, L, R (Up, Down, Left, Right)
+Press ENTER to move. Ctrl+C to exit.\n`);
+	}
+
+	askPlayer() {
+		let answer = prompt("Which direction do you want to move ▶ ").toLowerCase();
+		this.move(answer);
 	}
 
 	isInBounds() {
@@ -148,18 +143,18 @@ class Field {
 	}
 
 	isHat() {
-		return this.field[this.positionCol][this.positionRow] === hat;
+		return this.field[this.positionRow][this.positionCol] === hat;
 	}
 
 	isHole() {
-		return this.field[this.positionCol][this.positionRow] === hole;
+		return this.field[this.positionRow][this.positionCol] === hole;
 	}
 
 	play() {
 		let playing = true;
 
 		while (playing) {
-			this.print();
+			// this.print();
 			this.instructions();
 			this.askPlayer();
 
@@ -173,13 +168,12 @@ class Field {
 				console.log(`🤩 Congratulations! 🎉\nYou've found your ${hat} ✅`);
 				playing = false;
 			} else {
-				this.field[this.positionCol][this.positionRow] = pathCharacter;
+				this.field[this.positionRow][this.positionCol] = pathCharacter;
 			}
 		}
 	}
 }
 
-// Game Mode ON
 const newGame = new Field(Field.generateField(10, 10));
 newGame.play();
 

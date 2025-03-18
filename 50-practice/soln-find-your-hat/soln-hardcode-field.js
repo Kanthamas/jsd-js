@@ -12,7 +12,7 @@ class Field {
 		this.field = field;
 		this.positionRow = 0;
 		this.positionCol = 0;
-		this.field[this.positionCol][this.positionRow] = pathCharacter;
+		this.field[this.positionRow][this.positionCol] = pathCharacter;
 	}
 
 	print() {
@@ -22,19 +22,19 @@ class Field {
 	}
 
 	moveRight() {
-		this.positionRow += 1;
+		this.positionCol += 1;
 	}
 
 	moveLeft() {
-		this.positionRow -= 1;
-	}
-
-	moveUp() {
 		this.positionCol -= 1;
 	}
 
+	moveUp() {
+		this.positionRow -= 1;
+	}
+
 	moveDown() {
-		this.positionCol += 1;
+		this.positionRow += 1;
 	}
 
 	isInBounds() {
@@ -47,11 +47,11 @@ class Field {
 	}
 
 	isHat() {
-		return this.field[this.positionCol][this.positionRow] === hat;
+		return this.field[this.positionRow][this.positionCol] === hat;
 	}
 
 	isHole() {
-		return this.field[this.positionCol][this.positionRow] === hole;
+		return this.field[this.positionRow][this.positionCol] === hole;
 	}
 
 	askPlayer() {
@@ -74,7 +74,7 @@ class Field {
 				break;
 			default:
 				console.log("Invalid input. Please enter U, D, L, or R.");
-				return this.askPlayer(); // Recursively call if invalid input
+				return this.askPlayer();
 		}
 	}
 
@@ -95,7 +95,7 @@ class Field {
 				console.log(`🤩 Congratulations! You've found your hat! 🎉`);
 				playing = false;
 			} else {
-				this.field[this.positionCol][this.positionRow] = pathCharacter;
+				this.field[this.positionRow][this.positionCol] = pathCharacter;
 			}
 		}
 	}
