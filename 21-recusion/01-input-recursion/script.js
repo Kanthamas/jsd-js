@@ -16,7 +16,11 @@ function askUser() {
 		`Attempt ${attempts}/${maxAttempts}: Enter a number greater than 10:`
 	);
 
-	if (input === null) return;
+	if (input === null) {
+		document.getElementById("result").textContent =
+			"❌ You canceled the input.";
+		return;
+	}
 
 	if (parseInt(input) > 10) {
 		document.getElementById(

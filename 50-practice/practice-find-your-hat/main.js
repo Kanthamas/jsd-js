@@ -2,6 +2,8 @@
 // JS Assessment: Find Your Hat //
 const prompt = require("prompt-sync")({ sigint: true }); 
 const clear = require("clear-screen"); 
+
+const hat = "^"
 const hole = "O";
 const fieldCharacter = "░";
 const pathCharacter = "*";
@@ -9,10 +11,7 @@ const pathCharacter = "*";
 class Field {
 	constructor(field = [[]]) {
 		this.field = field;
-		this.positionX = 0;
-		this.positionY = 0;
-		// Set the home position at (0, 0) before the game starts
-		this.field[0][0] = pathCharacter;
+	 
 	}
 
 	// Print field method to make it eaier

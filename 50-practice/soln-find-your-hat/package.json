@@ -10,7 +10,7 @@
 	"type": "commonjs",
 	"main": "main.js",
 	"scripts": {
-		"dev": "node soln-random-all.js"
+		"dev": "node main.js"
 	},
 	"dependencies": {
 		"clear-screen": "^1.0.0",
