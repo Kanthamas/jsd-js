@@ -154,7 +154,7 @@ Press ENTER to move. Ctrl+C to exit.\n`);
 		let playing = true;
 
 		while (playing) {
-			// this.print();
+			this.print();
 			this.instructions();
 			this.askPlayer();
 
