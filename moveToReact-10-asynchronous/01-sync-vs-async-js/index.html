@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocking Cooking Process 🍝</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #log {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            font-size: 16px;
+        }
+
+        #log div {
+            margin-bottom: 10px;
+        }
+
+        #startButton {
+            padding: 10px 20px;
+            background-color: #008cba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #startButton:hover {
+            background-color: #005f6b;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍝 Blocking Cooking Process</h1>
+    <p>Click the button to start cooking and watch the process unfold in the log below.</p>
+    <button id="startButton">Start Cooking 🍳</button>
+    
+    <div id="log">
+        <!-- Cooking steps will be shown here -->
+    </div>
+
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            const logContainer = document.getElementById('log');
+            
+            logContainer.innerHTML = ''; // Clear any previous logs
+
+            // Start Cooking 🍳
+            log('👨‍🍳 Start cooking 🍳');
+
+            // 🍅 Sauce process
+            log('🔪 Chopping tomatoes and vegetables...');
+            wait(1); // Simulate chopping time
+            log('🍲 Cooking tomato sauce...');
+            wait(1); // Simulate cooking time for sauce
+            log('✅ Tomato sauce cooked, sauce ready!');
+
+            // 🥩 Meatball process
+            log('🥄 Mixing ground meat with spices and shaping meatballs...');
+            wait(1); // Simulate meatball prep time
+            log('🔥 Baking meatballs in the oven...');
+            wait(1); // Simulate baking time for meatballs
+            log('✅ Meatballs baked, meatballs ready!');
+
+            // 🍝 Pasta process
+            log('💦 Boiling water for pasta...');
+            wait(1); // Simulate water boiling time
+            log('♨️ Water boiled, adding pasta 🍝');
+            wait(1); // Simulate pasta cooking time
+            log('✅ Pasta cooked, pasta ready!');
+
+            // 🔄 Final cooking process
+            log('🍳 Cooking pasta, meatballs, and sauce together...');
+            wait(1); // Final combine and cooking time
+            log('✅ Pasta with meatballs in tomato sauce ready!');
+
+            // 🍽️ Serving
+            log('🎉 Pasta is served! 🍽️🍝');
+        });
+
+        // Function to simulate blocking wait time
+        function wait(seconds) {
+            const start = Date.now();
+            while (Date.now() - start < seconds * 1000) {
+                // Blocking the execution for 'seconds' duration
+            }
+        }
+
+        // Function to log messages to the page
+        function log(message) {
+            const logContainer = document.getElementById('log');
+            const logMessage = document.createElement('div');
+            logMessage.textContent = message;
+            logContainer.appendChild(logMessage);
+        }
+    </script>
+</body>
+</html>
