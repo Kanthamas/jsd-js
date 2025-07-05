@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<title>JavaScript</title>
+	</head>
+
+	<body>
+		<main class="grid place-items-center w-dvw min-h-dvh">
+			<h1 class="text-4xl font-bold">JavaScript</h1>
+			<button
+				class="flex items-center gap-1 px-6 py-2 text-xl font-semibold text-white rounded-full shadow-md cursor-pointer text-shadow-sm active:scale-102 bg-linear-to-r from-pink-500 to-purple-700 ring-pink-50 ring-2"
+				onclick="changeBgColor()"
+				id="magicBtn"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth="1.5"
+					stroke="currentColor"
+					class="w-6 h-6"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5"
+					/>
+				</svg>
+				<span>Magic</span>
+			</button>
+			<div class="flex justify-between w-4/5 gap-8 font-mono font-medium text-white">
+				<p
+					id="bodyColor"
+					class="w-full text-right"
+				></p>
+				|
+				<p
+					id="btnColor"
+					class="w-full"
+				></p>
+			</div>
+		</main>
+
+		<script>
+			const colors = [
+				"bg-lime-500",
+				"bg-sky-500",
+				"bg-pink-500",
+				"bg-slate-500",
+				"bg-amber-500",
+				"bg-cyan-500",
+			];
+			function changeBgColor() {
+				document.body.classList.remove(...colors);
+
+				const randomIndex = Math.floor(Math.random() * colors.length);
+
+				const randomColor = colors[randomIndex];
+
+				document.body.classList.add(randomColor);
+				document.body.classList.add("text-white");
+
+				const magicBtn = document.querySelector("#magicBtn");
+				magicBtn.classList.remove(
+					"bg-linear-to-r",
+					"from-pink-500",
+					"to-purple-700"
+				);
+				magicBtn.classList.remove(...colors);
+				const randomIndexMod = Math.floor(Math.random() * colors.length) % 6;
+
+				const randomMagicColor = colors[randomIndexMod];
+				magicBtn.classList.add(randomMagicColor);
+
+				const bodyColor = document.querySelector("#bodyColor");
+				bodyColor.textContent = `Body Color: ${randomColor}`;
+
+				const btnColor = document.querySelector("#btnColor");
+				btnColor.textContent = `Button Color: ${randomMagicColor}`;
+			}
+		</script>
+		<script src="./script.js"></script>
+	</body>
+</html>
