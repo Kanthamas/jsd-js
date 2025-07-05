@@ -34,7 +34,9 @@
 				</svg>
 				<span>Magic</span>
 			</button>
-			<div class="flex justify-between w-4/5 gap-8 font-mono font-medium text-white">
+			<div
+				class="flex justify-between w-11/12 gap-4 font-mono font-medium text-white"
+			>
 				<p
 					id="bodyColor"
 					class="w-full text-right"
@@ -49,20 +51,17 @@
 
 		<script>
 			const colors = [
-				"bg-lime-500",
-				"bg-sky-500",
-				"bg-pink-500",
-				"bg-slate-500",
-				"bg-amber-500",
-				"bg-cyan-500",
+				"bg-lime-600",
+				"bg-sky-600",
+				"bg-pink-600",
+				"bg-slate-600",
+				"bg-amber-600",
+				"bg-cyan-600",
 			];
 			function changeBgColor() {
 				document.body.classList.remove(...colors);
-
-				const randomIndex = Math.floor(Math.random() * colors.length);
-
+				const randomIndex = generateIndex(colors.length);
 				const randomColor = colors[randomIndex];
-
 				document.body.classList.add(randomColor);
 				document.body.classList.add("text-white");
 
@@ -73,16 +72,21 @@
 					"to-purple-700"
 				);
 				magicBtn.classList.remove(...colors);
-				const randomIndexMod = Math.floor(Math.random() * colors.length) % 6;
-
-				const randomMagicColor = colors[randomIndexMod];
+				const remainingColors = colors.filter(
+					(_, index) => index !== randomIndex
+				);
+				const randomIndexBtn = generateIndex(remainingColors.length);
+				const randomMagicColor = remainingColors[randomIndexBtn];
 				magicBtn.classList.add(randomMagicColor);
 
 				const bodyColor = document.querySelector("#bodyColor");
 				bodyColor.textContent = `Body Color: ${randomColor}`;
-
 				const btnColor = document.querySelector("#btnColor");
 				btnColor.textContent = `Button Color: ${randomMagicColor}`;
+			}
+
+			function generateIndex(limit) {
+				return Math.floor(Math.random() * limit);
 			}
 		</script>
 		<script src="./script.js"></script>
