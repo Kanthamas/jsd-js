@@ -1,37 +1,38 @@
 "use strict";
-function testDataTypes() {
-	// Primitive types (copied by value)
-	let myNickname = "johndoe";
-	let yourNickname = myNickname;
-	yourNickname = 555;
 
-	console.log("Primitive Types:");
-	console.log("myNumber:", myNickname);
-	console.log("yourNickname:", yourNickname);
-	console.log(myNickname == yourNickname);
-	console.log(myNickname === yourNickname);
+// 🧪 Accessing before declaration
 
-	// Reference types (copied by reference)
-	let myObject = { totalPoints: 10, nickname: "johndoe" };
-	let yourObject = myObject;
-	yourObject.totalPoints = 20;
-	yourObject.nickname = "jsd";
+console.log("num1 (var) before declaration:", num1); // ✅ undefined
 
-	console.log("Reference Types:");
-	console.log("myObject:", myObject);
-	console.log("yourObject:", yourObject);
-	console.log(myObject == yourObject);
-	console.log(myObject === yourObject);
-
-	let yourNewObject = { ...yourObject };
-	console.log("yourNewObject", yourNewObject);
-	console.log(yourNewObject == yourObject);
-	console.log(yourNewObject === yourObject);
-
-	let myNewObject = { totalPoints: 10, nickname: "johndoe" };
-	console.log("myNewObject", myNewObject);
-	console.log(myNewObject == myObject);
-	console.log(myNewObject === myObject);
+try {
+	console.log("num2 (let) before declaration:", num2); // ❌ ReferenceError
+} catch (err) {
+	console.log("num2 (let) before declaration: ERROR →", err.message);
 }
 
-testDataTypes();
+try {
+	console.log("num3 (const) before declaration:", num3); // ❌ ReferenceError
+} catch (err) {
+	console.log("num3 (const) before declaration: ERROR →", err.message);
+}
+
+try {
+	console.log("num4 (let unassigned) before declaration:", num4); // ❌ ReferenceError
+} catch (err) {
+	console.log("num4 (let unassigned) before declaration: ERROR →", err.message);
+}
+
+// 🧾 Variable declarations
+
+var num1 = 111; // Hoisted and initialized as undefined
+let num2 = 222; // Hoisted but not initialized [Temporal Dead Zone (TDZ)]
+const num3 = 333; // Hoisted but not initialized [TDZ] — must assign at declaration
+
+// 🧾 let declared without assignment (undefined by default after TDZ ends)
+let num4; // Declared, no value assigned → initialized to undefined after TDZ
+
+// ✅ Access after declaration
+console.log("num1 (var) after declaration:", num1); // 111
+console.log("num2 (let) after declaration:", num2); // 222
+console.log("num3 (const) after declaration:", num3); // 333
+console.log("num4 (let unassigned) after declaration:", num4); // undefined

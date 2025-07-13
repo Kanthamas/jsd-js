@@ -25,7 +25,7 @@ switch (day) {
 		lunch = "Pizza";
 		break;
 	default:
-		lunch = "Invalid day";
+		lunch = "Whatever your heart desires!";
 }
 
 console.log(`Lunch for ${day}: ${lunch}`);
