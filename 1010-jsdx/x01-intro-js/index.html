@@ -7,16 +7,20 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<!-- <script
+			defer
+			src="./script.js"
+		></script> -->
 		<title>JavaScript</title>
 	</head>
 
 	<body>
 		<main class="grid place-items-center w-dvw min-h-dvh">
-			<h1 class="text-4xl font-bold">JavaScript</h1>
+			<h1 class="text-4xl font-bold" onclick="alert('Hello JSD 10')">JavaScript</h1>
 			<button
 				class="flex items-center gap-1 px-6 py-2 text-xl font-semibold text-white rounded-full shadow-md cursor-pointer text-shadow-sm active:scale-102 bg-linear-to-r from-pink-500 to-purple-700 ring-pink-50 ring-2"
-				onclick="changeBgColor()"
 				id="magicBtn"
+				onclick="changeBgColor()"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +51,7 @@
 					class="w-full"
 				></p>
 			</div>
+			<div id="try-js" ></div>
 		</main>
 
 		<script>
@@ -58,6 +63,7 @@
 				"bg-amber-600",
 				"bg-cyan-600",
 			];
+
 			function changeBgColor() {
 				document.body.classList.remove(...colors);
 				const randomIndex = generateIndex(colors.length);
@@ -89,6 +95,20 @@
 				return Math.floor(Math.random() * limit);
 			}
 		</script>
-		<script src="./script.js"></script>
+
+		<!-- try JS with getElementById -->
+			<script>
+			document.getElementById(
+				"try-js"
+			).innerHTML = `<p class="text-3xl font-bold text-blue-700">I'm JSD 10</p>`;
+		</script>
+		<script>
+			const tryJs = document.getElementById("try-js");
+			console.log(tryJs);
+			tryJs.innerText = "John Doe (Again)"
+			tryJs.classList.add("bg-amber-500", "w-[80%]", "p-8", "text-3xl", "font-semibold");
+		</script>
+
+		<!-- <script src="./script.js"></script> -->
 	</body>
 </html>
