@@ -88,7 +88,7 @@ if (result === "") {
 console.log(result);
 
 // 5️⃣
-// TODO: Convert this if to switch (You can add more options.)
+// TODO: Convert this if to switch/case (You can add more options.)
 
 const fruit = "banana";
 

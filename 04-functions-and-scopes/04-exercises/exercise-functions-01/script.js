@@ -3,7 +3,6 @@
 function greetUser(name) {
 	return `Hello, ${name}!`;
 }
-
 // Function Expression
 const greetUserExpression = function (name) {
 	return `Hello, ${name}!`;
