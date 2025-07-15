@@ -41,6 +41,7 @@ console.log(isNumeric(userInput));
 // 11+ chars → "Strong"
 
 const password = "pass123";
+console.log(password.length)
 
 // Solution 3️⃣
 if (password.length < 6) {

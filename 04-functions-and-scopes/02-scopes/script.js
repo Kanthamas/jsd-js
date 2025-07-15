@@ -11,12 +11,12 @@ function myFunction() {
 		var blockVariableFunc = "I am block scoped 📦 with var (function scope 🏭)";
 
 		// Logging in Block Scope 📦//
-			// console.log("blockVariable in if(){}📦:", blockVariable);
-			// console.log("blockVariableFunc in if(){}📦:", blockVariableFunc);
+		// console.log("blockVariable in if(){}📦:", blockVariable);
+		// console.log("blockVariableFunc in if(){}📦:", blockVariableFunc);
 
-			// console.log("functionVariable in if(){}📦:", functionVariable);
+		// console.log("functionVariable in if(){}📦:", functionVariable);
 
-			// console.log("globalVariable in if(){}📦:", globalVariable);
+		// console.log("globalVariable in if(){}📦:", globalVariable);
 	}
 
 	// Logging in Function Scope 🏭//
@@ -43,11 +43,11 @@ myFunction();
 	let outerVariable = "I am from outer ☔";
 
 	function inner() {
-    let outerVariable = "I am from outer ☔ (Nope! I'm from inner 💧)";
+    // let outerVariable = "I am from outer ☔ (Nope! I'm from inner 💧)";
     let innerVariable = "I'm from inner 💧";
 		
-    // console.log(innerVariable);
-		console.log(outerVariable);
+    console.log(innerVariable);
+		// console.log(outerVariable);
 	}
 
 	inner();
