@@ -36,3 +36,7 @@ const greetWithArrow = (name) => {
 console.log(greetWithDeclaration("John Doe")); // "Hello, John Doe!"
 console.log(greetWithExpression("John Doe")); // "Hello, John Doe!"
 console.log(greetWithArrow("John Doe")); // "Hello, John Doe!"
+
+const username = "mean"
+const message = greetWithArrow(username)
+console.log(message)

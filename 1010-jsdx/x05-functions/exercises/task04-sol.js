@@ -17,7 +17,7 @@ Task 04: Traffic Light Action
 */
 
 // 👨‍💻 TODO-01: Write your code below to complete the task as described above.
-function trafficLightAction(color) {
+/* function trafficLightAction(color) {
 	switch (color) {
 		case "green":
 			return "Go";
@@ -28,9 +28,9 @@ function trafficLightAction(color) {
 		default:
 			return "Invalid light color";
 	}
-}
+} */
 
-/* function trafficLightAction(color) {
+function trafficLightAction(color) {
 	let message = "";
 	switch (color) {
 		case "green":
@@ -46,7 +46,7 @@ function trafficLightAction(color) {
 			message = "Invalid light color";
 	}
 	return message;
-} */
+}
 
 // Example Test Cases
 console.log(trafficLightAction("green")); // "Go"
