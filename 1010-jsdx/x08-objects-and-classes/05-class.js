@@ -173,3 +173,45 @@ kitty.move();
 const nemo = new Fish("Nemo", "orange");
 nemo.speak();
 nemo.move();
+
+// Math Object //
+Math.abs(-5); // 5
+Math.round(4.6); // 5
+Math.floor(4.6); // 4
+Math.ceil(4.1); // 5
+Math.max(2, 8); // 8
+Math.min(2, 8); // 2
+Math.random(); // 0 ≤ result < 1
+Math.pow(2, 3); // 8
+Math.sqrt(16); // 4
+
+// Random Number //
+// Math.floor(Math.random() * (max - min + 1)) + min
+const randomNum1 = Math.floor(Math.random() * 10) + 1;
+console.log(randomNum1); // 1 to 10
+
+const randomNum2 = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+console.log(randomNum2); // 50 to 100
+
+const colors = ["red", "green", "blue", "yellow"];
+const randomIndex = Math.floor(Math.random() * colors.length);
+console.log(`Picked color: ${colors[randomIndex]}`);
+
+// Date Object //
+/* const now = new Date(); // current date and time
+now.getFullYear(); // year
+now.getMonth(); // month (0-11)
+now.getDate(); // day of month (1-31)
+now.getHours(); // hour (0-23)
+now.getMinutes(); // minute (0-59)
+now.getSeconds(); // second (0-59) */
+
+const specific = new Date(2025, 0, 15); // 15 Jan 2025
+specific.toDateString(); // "Wed Jan 15 2025"
+specific.toISOString(); // "2025-01-15T00:00:00.000Z"
+
+const catBirthday = new Date(2020, 4, 10); // May 10, 2020
+console.log(`Cat was born on ${catBirthday.toDateString()}`);
+
+const now = new Date();
+console.log(`Current time: ${now.getHours()}:${now.getMinutes()}`);
