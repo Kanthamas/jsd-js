@@ -21,7 +21,6 @@ function divide(num1, num2) {
 }
 
 // Step 02: Create a Validation Function for Inputs
-
 function validateInputs(num1, num2) {
 	if (!isNumber(num1) || !isNumber(num2)) {
 		return "Both inputs must be numbers";
