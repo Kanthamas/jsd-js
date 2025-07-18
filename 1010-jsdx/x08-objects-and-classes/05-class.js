@@ -57,6 +57,7 @@ class Employee {
 	constructor(name, role) {
 		this.name = name;
 		this.role = role;
+		this.isEmployed = true;
 	}
 	work() {
 		console.log(`${this.name} is working as ${this.role}.`);
@@ -65,6 +66,9 @@ class Employee {
 
 const johnDev = new Employee("John Doe", "Software Developer");
 johnDev.work();
+
+const meanQa = new Employee("Mean", "QA");
+meanQa.work();
 
 // Static Methods //
 class MyClass {

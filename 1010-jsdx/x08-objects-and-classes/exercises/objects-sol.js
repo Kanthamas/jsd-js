@@ -90,5 +90,6 @@ const {
 		specs: { cpu },
 	},
 } = product;
+
 console.log("Brand:", brand); // TechPro
 console.log("CPU:", cpu); // i7
