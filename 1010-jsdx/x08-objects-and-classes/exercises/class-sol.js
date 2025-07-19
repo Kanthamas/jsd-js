@@ -58,13 +58,12 @@ class Product {
 // ✅ STEP 3: Subclasses
 class LandProduct extends Product {
 	getInfo() {
-		return `[Land] ${super.getInfo()}`;
+		return `[Land] ${this.name} costs $${this.price}`;
 	}
 }
-
 class SeaProduct extends Product {
 	getInfo() {
-		return `[Sea] ${super.getInfo()}`;
+		return `[Sea] ${this.name} costs $${this.price}`;
 	}
 }
 
