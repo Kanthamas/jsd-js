@@ -1,7 +1,7 @@
 "use strict";
 
 // ===============================
-// ✅ SOLUTION: PRODUCT CLASS (KISS version)
+// ✅ SOLUTION: PRODUCT CLASS 
 // ===============================
 
 // ✅ STEP 1: Custom ValidationError

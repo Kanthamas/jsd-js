@@ -2,14 +2,14 @@
 const prompt = require("prompt-sync")({ sigint: true }); // This sends a SIGINT, or “signal interrupt” message indicating that a user wants to exit a program by press Crtl+c
 const clear = require("clear-screen"); //every turn clear the screen that meant you will not get new field in time you choose the direction
 
-// const hat = "^";
-// const hole = "O";
-// const fieldCharacter = "░";
-// const pathCharacter = "*";
-const hat = "👒";
-const hole = "💥";
-const fieldCharacter = "🟩";
-const pathCharacter = "👩";
+const hat = "^";
+const hole = "O";
+const fieldCharacter = "░";
+const pathCharacter = "*";
+// const hat = "👒";
+// const hole = "💥";
+// const fieldCharacter = "🟩";
+// const pathCharacter = "👩";
 
 class Field {
 	constructor(field = [[]]) {
@@ -123,7 +123,7 @@ class Field {
 	}
 
 	instructions() {
-		console.log(`\nFind your ${hat}!
+		console.log(`\nMove [${pathCharacter}] to find your [${hat}]
 Type: U, D, L, R (Up, Down, Left, Right)
 Press ENTER to move. Ctrl+C to exit.\n`);
 	}
@@ -165,7 +165,11 @@ Press ENTER to move. Ctrl+C to exit.\n`);
 				console.log("😭 You fell down a hole!");
 				playing = false;
 			} else if (this.isHat()) {
-				console.log(`🤩 Congratulations! 🎉\nYou've found your ${hat} ✅`);
+				console.log(
+					`🤩 Congratulations! 🎉\nYou've found your ${
+						hat === "^" ? "hat" : hat
+					} ✅`
+				);
 				playing = false;
 			} else {
 				this.field[this.positionRow][this.positionCol] = pathCharacter;
