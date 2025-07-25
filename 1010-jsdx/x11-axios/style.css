@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100dvw;
+	height: 100dvh;
+	font-family: sans-serif;
+	background-color: lightskyblue;
+}
+#app {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	margin-top: 2rem;
+}
+.error {
+	color: red;
+	font-weight: 300;
+}
+
+.post {
+	padding: 1rem 2rem;
+	background-color: #123456;
+	color: wheat;
+	max-width: 80ch;
+	h2 {
+		margin-bottom: 1rem;
+	}
+}

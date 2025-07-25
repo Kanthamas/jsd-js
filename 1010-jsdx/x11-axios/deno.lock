@@ -1,0 +1,24 @@
+{
+  "version": "5",
+  "remote": {
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/axios.js": "ea5ca6ea36357c5e768ead4c12fc6a0921bc567acf0c3c45ec62f4580deaadcb",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/axios/lib/adapters/http.js": "c4c738b042d3cb04c1c809da222e07cfcfee421f949b8beac53a823659c6d0da",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/axios/unsafe/axios.js": "cfde92bc0f33c5065ee3bfc33e0148f4a2d2473687fbf7abc30dd3a75c2a14c5",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/axios/unsafe/core/buildFullPath.js": "7e9cbc3774a2c3b6af7ff35cb39dc9b4cc71899f45560fb96daf8d41115798d8",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/axios/unsafe/core/settle.js": "e628a5b86252ecf0c10d028da1e0ed0673f2ac821a734708d5470038ab667177",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/axios/unsafe/helpers/combineURLs.js": "a9c8e23319c41428ea902926ec9e2bc2c9b1ce0ddf0689fcd8b4323d652fff5a",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/axios/unsafe/helpers/isAbsoluteURL.js": "55fe29d03f51b2afee61d15026932f0c0e6436852b638561298e4b2d5111b6a6",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/common/AxiosError-cf37179f.js": "a7a6fc2be3c041dd7b89b84411b13ee2c2aee6600118e4aff9ec8b828e68c413",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/common/buildURL-ea5e476f.js": "ecfd2b569d4728a8fa3fc1dc0727382dcf20fe1615e26fada84ad7def9f0a755",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/common/utils-297e67de.js": "8e9160f7bf22a41552793449dad28b8557682677447574c7b7ebb61268c3cada",
+    "https://cdn.skypack.dev/-/axios@v1.11.0-cEzgFDuPw3wJ5J5l5zA0/dist=es2019,mode=imports/optimized/common/xhr-2a6aa0f2.js": "312db304add38360bc005f74ba91527f47d556adc8740f5061d6fac9a8f13ad9",
+    "https://cdn.skypack.dev/axios": "6986239f40a4665430ccdf31c3d4d3794c09bed7bcadb0ad2b49d2dfd6e01e90"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:axios@^1.11.0"
+      ]
+    }
+  }
+}
