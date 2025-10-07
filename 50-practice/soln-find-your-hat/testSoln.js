@@ -1,92 +1,128 @@
 "use strict";
 // JS Assessment: Find Your Hat //
-const prompt = require("prompt-sync")({ sigint: true });
-const clear = require("clear-screen");
+import promptSync from "prompt-sync";
+import clear from "clear-screen";
+
+const prompt = promptSync({ sigint: true });
+
+const hat = "^";
 const hole = "O";
 const fieldCharacter = "░";
 const pathCharacter = "*";
-const hat = "^";
+
+// เกมส์นี้ต้องการให้ผู้เล่น"*"ตามหาหมวก"^"" จากจุดเริ่มต้นที่ 0 โดยมีอุปสรรคเป็นหลุม "0"
+// เริ่มต้น -> สร้าง field -> print field->  move function -> game conditions ->win or fault.
 
 class Field {
 	constructor(field = [[]]) {
 		this.field = field;
 		this.positionRow = 0;
 		this.positionCol = 0;
-		this.field[this.positionCol][this.positionRow] = pathCharacter;
+		this.gameOver = false;
+		this.field[this.positionRow][this.positionCol] = pathCharacter;
 	}
 
-	//  แล้ว clear () เม็ดตอล เอาไปใช้ยังไง?
+	// Print field //
+
 	print() {
-		let fieldString = "";
-		for (let i = 0; i < this.field.length; i++) {
-			fieldString += this.field[i].join("");
-			fieldString += "\n";
-		}
-		console.log(fieldString);
+		clear();
+		console.log("Current Field:");
+		this.field.forEach((row) => console.log(row.join("")));
 	}
 
-	validateInput(row, col) {
-		try {
-			if (this.field[row][col] === hat) {
-				return 1;
-			} else if (this.field[row][col] === hole) {
-				return 2;
-			} else {
-				return 3;
-			}
-		} catch (e) {
-			console.log("แอบมองเธออยู่นะจ๊ะ");
-			return 0;
+	moveUp() {
+		this.moveTo(this.positionCol, this.positionRow - 1);
+	}
+
+	moveDown() {
+		this.moveTo(this.positionCol, this.positionRow + 1);
+	}
+
+	moveLeft() {
+		this.moveTo(this.positionCol - 1, this.positionRow);
+	}
+
+	moveRight() {
+		this.moveTo(this.positionCol + 1, this.positionRow);
+	}
+
+	moveTo(x, y) {
+		// เงื่อนไข check ว่าให้อยู่ใน field ไหม ไม่อยู่ Game over
+		if (y < 0 || y >= this.field.length || x < 0 || x >= this.field[0].length) {
+			console.log("🚫 You went out of bounds! Game over.");
+			this.gameOver = true;
+			return;
+		}
+
+		// move direction เงื่อนไขการเดินของผู้เล่น โดยการกำหนดการเคลื่อนที่ ซ้าย ขวา บน ล่าง และเงื่อนไขการเดินตกหลุม แล้ว Gameover
+		const walk = this.field[y][x];
+
+		if (walk === hole) {
+			console.log("💀 You fell into a hole! Game over");
+			this.gameOver = true;
+		} else if (walk === hat) {
+			console.log("🎉 You found the hat! You win!");
+			this.gameOver = true;
+		} else {
+			this.positionCol = x;
+			this.positionRow = y;
+			this.field[y][x] = pathCharacter;
+			this.print();
 		}
 	}
-	updateFieldArray(row, col) {
-		if (this.field[row][col] !== hat && this.field[row][col] !== hole) {
-			this.field[row][col] = pathCharacter;
-		}
-	}
+
+	// Game Mode ON
+	// Remark: Code example below should be deleted and use your own code.
+
 	playGame() {
-		let rowIndex = 0;
-		let columnIndex = 0;
+		this.print();
 
-		let gameOver = false;
-		while (!gameOver) {
-			newGame.print();
-
-			const userInput = prompt("อยากไปไหนเลือกเลย (l/r/u/d): ");
-
-			// Handle ได้เวลาmove on
-			if (userInput === "l") {
-				columnIndex -= 1;
-			} else if (userInput === "r") {
-				columnIndex += 1;
-			} else if (userInput === "u") {
-				rowIndex -= 1;
-			} else if (userInput === "d") {
-				rowIndex += 1;
-			}
-
-			// วาลิเดท
-			const validation = this.validateInput(rowIndex, columnIndex);
-
-			if (validation === 0) {
-				console.log("คุณออกนอกขอบเขต แต่เต้ยเป็นผู้ชายที่มีขอบเขต!");
-				break;
-			} else if (validation === 1) {
-				console.log("ตื่นเต้นมากๆครับเจอหมวกแล้ว!");
-				break;
-			} else if (validation === 2) {
-				console.log("ตกหลุมรักขึ้นไม่ไหวใครผลัก!");
-				break;
-			} else {
-				this.updateFieldArray(rowIndex, columnIndex);
+		while (!this.gameOver) {
+			const input = prompt("Which way? (u/d/l/r): ").toLowerCase();
+			switch (input) {
+				case "u":
+					this.moveUp();
+					break;
+				case "d":
+					this.moveDown();
+					break;
+				case "l":
+					this.moveLeft();
+					break;
+				case "r":
+					this.moveRight();
+					break;
+				default:
+					console.log("❌ not command /must use: u / d / l / r only");
 			}
 		}
+	}
+
+	//สร้าง Field แบบสุ่มได้
+
+	static generateField(height, width, holePercentage = 0.2) {
+		const field = [];
+
+		for (let y = 0; y < height; y++) {
+			const row = [];
+			for (let x = 0; x < width; x++) {
+				row.push(Math.random() < holePercentage ? hole : fieldCharacter);
+			}
+			field.push(row);
+		}
+		field[0][0] = pathCharacter;
+
+		let hatX, hatY;
+		do {
+			hatX = Math.floor(Math.random() * width);
+			hatY = Math.floor(Math.random() * height);
+		} while (hatX === 0 && hatY === 0);
+
+		field[hatY][hatX] = hat;
+		return field;
 	}
 }
-const newGame = new Field([
-	["*", "░", "O"],
-	["░", "O", "░"],
-	["░", "^", "░"],
-]);
 
-newGame.playGame();
+// เกมโดยสุ่มสนาม พร้อมหลุม
+const myField = new Field(Field.generateField(10, 10, 0.1));
+myField.playGame();

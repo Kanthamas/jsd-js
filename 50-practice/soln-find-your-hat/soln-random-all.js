@@ -1,6 +1,7 @@
 "use strict";
-const prompt = require("prompt-sync")({ sigint: true });
-const clear = require("clear-screen");
+import promptSync from "prompt-sync";
+import clear from "clear-screen";
+const prompt = promptSync({ sigint: true });
 
 const hat = "🍣";
 const hole = "🥦";
