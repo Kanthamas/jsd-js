@@ -1,6 +1,7 @@
-// Logical Operations in a Traffic Light
+type TrafficLight = "green" | "yellow" | "red";
+
 // 1. AND Logic (&&) - Safe to Go
-/* function canCarMove(light, roadClear) {
+/* function canCarMove(light: TrafficLight, roadClear: boolean): boolean {
 	return light === "green" && roadClear;
 }
 
@@ -9,7 +10,10 @@ console.log(canCarMove("green", false)); // ❌ false (Obstacle ahead)
 console.log(canCarMove("red", true)); // ❌ false (Wait for green) */
 
 // 2. OR Logic (||) - Special Cases for Moving
-/* function canCarMoveOverride(light, policeSignal) {
+/* function canCarMoveOverride(
+	light: TrafficLight,
+	policeSignal: boolean
+): boolean {
 	return light === "green" || policeSignal;
 }
 
@@ -18,7 +22,7 @@ console.log(canCarMoveOverride("green", false)); // ✅ true (Normal green light
 console.log(canCarMoveOverride("red", false)); // ❌ false (Car must stop) */
 
 // 3. NOT Logic (!) - When to Stop 🚫
-/* function shouldCarStop(light) {
+/* function shouldCarStop(light: TrafficLight): boolean {
 	return light !== "green";
 }
 
@@ -27,10 +31,11 @@ console.log(shouldCarStop("red")); // ✅ true (Car stops)
 console.log(shouldCarStop("yellow")); // ✅ true (Car stops) */
 
 // Smart Traffic Light 🚦🤖
-function smartTrafficLight(light, emergencyDetected) {
-	if (emergencyDetected) {
-		return true; // Override: An emergency vehicle is detected.
-	}
+function smartTrafficLight(
+	light: TrafficLight,
+	emergencyDetected: boolean
+): boolean {
+	if (emergencyDetected) return true; // Override: An emergency vehicle is detected
 	return light === "green";
 }
 

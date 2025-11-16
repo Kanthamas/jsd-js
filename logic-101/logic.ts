@@ -1,4 +1,4 @@
-function checkLogic(x, y) {
+function checkLogic(x:number, y:number) {
 	let P = x >= 2;
 	let Q = y <= 4;
 
@@ -14,4 +14,4 @@ function checkLogic(x, y) {
 	console.log("P <=> Q:", (P && Q) || (!P && !Q)); // Biconditional
 }
 
-checkLogic(1, 5); // Example case: x = 3, y = 4
+checkLogic(3, 4); // Example case: x = 3, y = 4
