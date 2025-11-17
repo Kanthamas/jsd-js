@@ -15,3 +15,17 @@ console.log(password.length); */
 } else {
 	console.log("Strong");
 } */
+
+/* Function */
+
+const checkPasswordLength = (password: string) => {
+	if (password.length < 6) {
+		console.log("Too short");
+	} else if (password.length <= 10) {
+		console.log("Moderate");
+	} else {
+		console.log("Strong");
+	}
+};
+
+checkPasswordLength("pass123");

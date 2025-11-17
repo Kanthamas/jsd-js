@@ -13,7 +13,22 @@
 } */
 
 // Make it a helper function
-/* function isNumeric(value) {
+/* function isNumeric(value:any) {
 	return typeof value === "number" && !isNaN(value);
 }
 console.log(isNumeric(userInput)); */
+
+/* Function */
+const checkNumber = (userInput: any) => {
+	if (typeof userInput === "number" && !isNaN(userInput)) {
+		console.log("It is a number.");
+	} else {
+		console.log("It is NOT a number.");
+	}
+};
+
+checkNumber("42")
+checkNumber(42)
+checkNumber("")
+checkNumber(null)
+checkNumber(NaN)
