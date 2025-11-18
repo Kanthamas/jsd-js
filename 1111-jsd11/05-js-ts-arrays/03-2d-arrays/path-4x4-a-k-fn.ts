@@ -1,4 +1,4 @@
-"use strict";
+// @ts-nocheck
 const board = [
 	["A", "B", "C", "D"],
 	["E", "X", "G", "H"],
@@ -6,24 +6,24 @@ const board = [
 	["M", "N", "O", "P"],
 ];
 
-let x = 0;
-let y = 0; // Start at A (0,0) -> [row][col]
+let row = 0;
+let col = 0; // Start at A (0,0) -> [row][col]
 const moves = [];
 
 // Function to move right
 function moveRight() {
-	y++;
-	moves.push(board[x][y]);
+	col++;
+	moves.push(board[row][col]);
 }
 
 // Function to move down
 function moveDown() {
-	x++;
-	moves.push(board[x][y]);
+	row++;
+	moves.push(board[row][col]);
 }
 
 // Start at A
-moves.push(board[x][y]); // A
+moves.push(board[row][col]); // A
 
 // Move right to B
 moveRight();

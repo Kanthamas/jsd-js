@@ -1,12 +1,8 @@
-"use strict"
-
-/* const fruits = ["🍎 Apple", "🍉 Watermelon", "🍒 Cherries"];
-console.log(fruits[0]); // "🍎 Apple" */
+const fruits = ["🍎 Apple", "🍉 Watermelon", "🍒 Cherries"];
+// console.log(fruits[0]); // "🍎 Apple"
 
 /* const arr = [1, 2, 3];
 console.log(Array.isArray(arr)); // true ✅ */
-
-const fruits = ["🍎 Apple", "🍉 Watermelon", "🍒 Cherries"];
 
 // Acces array with index
 /* console.log(fruits[0]); // "🍎 Apple" (First element)
@@ -25,22 +21,22 @@ console.log(matrix[0][1]); // 2 (Row 0, Column 1)
 console.log(matrix[1][2]); // 6 (Row 2, Column 3) */
 
 // Array are mutable
-/* console.log(fruits[0]);
-console.log(fruits);
+// console.log(fruits[0]);
+// console.log(fruits);
 
 fruits[0] = "🍍 Pineapple";
 
-console.log(fruits[0]);
-console.log(fruits); */
+// console.log(fruits[0]);
+// console.log(fruits);
 
 // Mofify out of range index
-/* console.log(fruits.length)
+// console.log(fruits.length)
 
-fruits[5] = "🍊 Orange";
-console.log(fruits);
-console.log(fruits.length); */
+// fruits[5] = "🍊 Orange";
+// console.log(fruits);
+// console.log(fruits.length);
 
-/* for (fruit of fruits) {
+/* for (let fruit of fruits) {
   console.log(fruit)
 } */
 

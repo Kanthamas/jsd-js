@@ -1,14 +1,17 @@
-"use strict";
+interface MenuItem {
+	name: string;
+	available: boolean;
+}
 
 // 📍 Menus
-const bangkokBranchMenu = [
+const bangkokBranchMenu: MenuItem[] = [
 	{ name: "🍕 Pizza", available: true },
 	{ name: "🍔 Burger", available: false },
 	{ name: "🥗 Salad", available: true },
 	{ name: "🍣 Sushi", available: true },
 ];
 
-const phuketBranchMenu = [
+const phuketBranchMenu: MenuItem[] = [
 	{ name: "🍩 Donut", available: false },
 	{ name: "☕ Coffee", available: true },
 	{ name: "🍜 Ramen", available: true },
@@ -16,7 +19,7 @@ const phuketBranchMenu = [
 ];
 
 // ✅ Pure function: just returns available items
-function getServingList(branchMenu) {
+function getServingList(branchMenu: MenuItem[]) {
 	const servingList = [];
 	for (let i = 0; i < branchMenu.length; i++) {
 		const item = branchMenu[i];
@@ -28,7 +31,7 @@ function getServingList(branchMenu) {
 }
 
 // ✨ Separate function for logging
-function logServingList(branchName, branchMenu) {
+function logServingList(branchName: string, branchMenu: MenuItem[]) {
 	console.log(`\n🔄 Checking menu for ${branchName} Branch...\n`);
 	branchMenu.forEach((item) => {
 		if (item.available) {
@@ -37,8 +40,8 @@ function logServingList(branchName, branchMenu) {
 			console.log(`❌ Sold out: ${item.name}`);
 		}
 	});
-	// const available = getServingList(branchMenu);
-	const available = getServingListHOF(branchMenu);
+	const available = getServingList(branchMenu);
+	// const available = getServingListHOF(branchMenu);
 	console.log(`\n🍽️ Final serving list: ${branchName} Branch`);
 	console.log(available.join(", "));
 	console.log("-".repeat(30));
@@ -49,22 +52,22 @@ logServingList("Bangkok", bangkokBranchMenu);
 logServingList("Phuket", phuketBranchMenu);
 
 // HOF
-function getServingListHOF(branchMenu) {
+/* function getServingListHOF(branchMenu: MenuItem[]) {
 	return branchMenu
 		.filter((item) => item.available) // only available items
 		.map((item) => item.name); // extract names
-}
+} */
 
 // HOF: .filter()
-const availableMenu = (branchMenu) =>
-	branchMenu.filter((item) => item.available);
+/* const availableMenu = (branchMenu: MenuItem[]) =>
+	branchMenu.filter((item) => item.available); */
 
 // console.log(availableMenu(bangkokBranchMenu));
 // console.log(availableMenu(phuketBranchMenu))
 
 // HOF: .map()
-const servingListMenu = (availableMenu) =>
-	availableMenu.map((item) => item.name);
+/* const servingListMenu = (availableMenu: MenuItem[]) =>
+	availableMenu.map((item) => item.name); */
 
 // console.log(servingListMenu(availableMenu(bangkokBranchMenu)));
 // console.log(servingListMenu(availableMenu(phuketBranchMenu)));

@@ -1,39 +1,40 @@
-"use strict";
+// @ts-nocheck
 const board = [
 	["A", "B", "C"],
 	["D", "E", "F"],
 	["G", "H", "I"],
 ];
 
-let x = 0; // Starting row index
-let y = 0; // Starting column index
-
 const moves = [];
-moves.push(board[x][y]); // Start at A
+
+// Start at A (0,0) -> [row][col]
+let row = 0;
+let col = 0;
+moves.push(board[row][col]); // A
 
 // Define movement functions
 // Move right (increase column index)
 function moveRight() {
-	y++; 
-	moves.push(board[x][y]);
+	col++;
+	moves.push(board[row][col]);
 }
 
 // Move left (decrease column index)
 function moveLeft() {
-	y--; 
-	moves.push(board[x][y]);
+	col--;
+	moves.push(board[row][col]);
 }
 
 // Move up (decrease row index)
 function moveUp() {
-	x--; 
-	moves.push(board[x][y]);
+	row--;
+	moves.push(board[row][col]);
 }
 
 // Move down (increase row index)
 function moveDown() {
-	x++; 
-	moves.push(board[x][y]);
+	row++;
+	moves.push(board[row][col]);
 }
 
 // Call the movement functions

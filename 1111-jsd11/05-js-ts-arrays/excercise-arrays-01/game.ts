@@ -1,31 +1,32 @@
-"use strict";
+//@ts-nocheck
 const board = [
 	["A", "B", "C"],
 	["D", "E", "F"],
 	["G", "H", "I"],
 ];
 
-let x = 0;
-let y = 0; // Start at A (0,0) -> [row][col]
-
 const moves = [];
-moves.push(board[x][y]); // A
+
+// Start at A (0,0) -> [row][col]
+let row = 0;
+let col = 0;
+moves.push(board[row][col]); // A
 
 // Move Right to B
-y++;
-moves.push(board[x][y]); // B
+col++;
+moves.push(board[row][col]); // B
 
 // Move Right to C
-y++;
-moves.push(board[x][y]);
+col++;
+moves.push(board[row][col]);
 
 // Move Down to F
-x++;
-moves.push(board[x][y]);
+row++;
+moves.push(board[row][col]);
 
 // Move left to E
-y--;
-moves.push(board[x][y]);
+col--;
+moves.push(board[row][col]);
 
 console.log("Path:", moves.join(" → "));
 // Output: Path: A → B → C → F → E

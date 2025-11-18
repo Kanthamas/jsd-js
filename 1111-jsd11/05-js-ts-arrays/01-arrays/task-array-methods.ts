@@ -1,5 +1,3 @@
-"use strict";
-
 // 📝 Task 1: Setup Your Array
 const menu = ["🍕 Pizza", "🍔 Burger", "🌮 Taco", "🍣 Sushi", "🥤 Soda"];
 console.log("Initial Menu:", menu);

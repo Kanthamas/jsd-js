@@ -1,5 +1,3 @@
-"use strict";
-
 // Using for Loop
 const foods = ["🍕 Pizza", "🍔 Burger", "🌮 Taco"];
 
@@ -17,11 +15,11 @@ Output:
 */
 
 // Using for...of Loop
-const drinks = ["☕ Coffee", "🍵 Tea", "🥤 Soda"];
+/* const drinks = ["☕ Coffee", "🍵 Tea", "🥤 Soda"];
 
 for (let drink of drinks) {
 	console.log(`I like ${drink}`);
-}
+} */
 /*
 Output:
 I like ☕ Coffee
@@ -30,11 +28,11 @@ I like 🥤 Soda
 */
 
 // Using .forEach()
-const desserts = ["🍦 Ice Cream", "🍩 Donut", "🍪 Cookie"];
+/* const desserts = ["🍦 Ice Cream", "🍩 Donut", "🍪 Cookie"];
 
 desserts.forEach((dessert, index) => {
 	console.log(`${index + 1}. ${dessert}`);
-});
+}); */
 /*
 Output:
 1. 🍦 Ice Cream

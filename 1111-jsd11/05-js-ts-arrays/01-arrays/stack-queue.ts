@@ -1,5 +1,3 @@
-"use strict";
-
 // Stack (LIFO - Last In, First Out)
 /* const stack = [];
 stack.push("A"); // Add "A"

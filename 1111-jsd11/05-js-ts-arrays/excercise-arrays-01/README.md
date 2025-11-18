@@ -25,7 +25,7 @@ Goal: Start at cell A (position [0][0]) and move through the grid using a combin
 
 ## Task:
 
-### Complete the provided code. (file: game.js)
+### Complete the provided code. (file: game.ts)
 
 ```js
 // Move Right to C
@@ -37,7 +37,7 @@ Goal: Start at cell A (position [0][0]) and move through the grid using a combin
 
 ## Bonus Task:
 
-### Create functions to complete the provided code. (file: game-fn.js)
+### Create functions to complete the provided code. (file: game-fn.ts)
 
 ```js
 function moveRight() {}
