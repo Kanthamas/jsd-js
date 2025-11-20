@@ -1,4 +1,4 @@
-let isWeekend = true;
+let isWeekend = false;
 let isSunny = true;
 
 if (isWeekend) {
@@ -12,7 +12,7 @@ if (isWeekend) {
 // Output: "Let's have some ice-cream!"
 
 // Checking user access based on role and subscription
-let role = "user";
+let role = "admin";
 let isPremium = true;
 
 if (role === "user") {

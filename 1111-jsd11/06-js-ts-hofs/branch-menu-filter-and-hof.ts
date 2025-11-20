@@ -1,7 +1,7 @@
-interface MenuItem {
+type MenuItem = {
 	name: string;
 	available: boolean;
-}
+};
 
 // 📍 Menus
 const bangkokBranchMenu: MenuItem[] = [
@@ -51,13 +51,13 @@ function logServingList(branchName: string, branchMenu: MenuItem[]) {
 logServingList("Bangkok", bangkokBranchMenu);
 logServingList("Phuket", phuketBranchMenu);
 
-// HOF
+/* HOFs */
 /* function getServingListHOF(branchMenu: MenuItem[]) {
 	return branchMenu
 		.filter((item) => item.available) // only available items
 		.map((item) => item.name); // extract names
-} */
-
+}
+ */
 // HOF: .filter()
 /* const availableMenu = (branchMenu: MenuItem[]) =>
 	branchMenu.filter((item) => item.available); */

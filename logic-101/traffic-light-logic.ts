@@ -34,14 +34,17 @@ console.log(shouldCarStop("yellow")); // ✅ true (Car stops) */
 function smartTrafficLight(
 	light: TrafficLight,
 	emergencyDetected: boolean
-): boolean {
-	if (emergencyDetected) return true; // Override: An emergency vehicle is detected
+) {
+	if (emergencyDetected) {
+		return true;
+	 } // Override: An emergency vehicle is detected
 	return light === "green";
 }
 
 console.log(smartTrafficLight("green", true)); // ✅ true (Override)
-console.log(smartTrafficLight("yellow", true)); // ✅ true (Override)
-console.log(smartTrafficLight("red", true)); // ✅ true (Override)
-console.log(smartTrafficLight("green", false)); // ✅ true (Normal movement)
-console.log(smartTrafficLight("yellow", false)); // ❌ false (Stop)
-console.log(smartTrafficLight("red", false)); // ❌ false (Stop)
+// console.log(smartTrafficLight("green", true)); // ✅ true (Override)
+// console.log(smartTrafficLight("yellow", true)); // ✅ true (Override)
+// console.log(smartTrafficLight("red", true)); // ✅ true (Override)
+// console.log(smartTrafficLight("green", false)); // ✅ true (Normal movement)
+// console.log(smartTrafficLight("yellow", false)); // ❌ false (Stop)
+// console.log(smartTrafficLight("red", false)); // ❌ false (Stop)
