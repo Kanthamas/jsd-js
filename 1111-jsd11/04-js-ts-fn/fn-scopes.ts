@@ -27,7 +27,7 @@ function myFunction() {
 	// console.log("globalVariable in myFunction()🏭:", globalVariable);
 }
 
-// myFunction();
+myFunction();
 
 // Logging in Global Scope 🌏//
 // console.log("blockVariable in global🌏:", blockVariable);
@@ -38,19 +38,19 @@ function myFunction() {
 // console.log("globalVariable in global🌏:", globalVariable);
 
 // Lecical Scope //
-console.log(outer);
+// console.log(outer);
 function outer() {
 	let outerVariable = "I am from outer ☔";
 
 	function inner() {
 		let outerVariable = "I am from outer ☔ (Nope! I'm from inner 💧)";
-		let innerVariable = "I'm from inner 💧";
+		// let innerVariable = "I'm from inner 💧";
 
-		console.log(innerVariable);
+		// console.log(innerVariable);
 		console.log(outerVariable);
 	}
 
 	inner();
 }
 
-// outer();
+outer();
