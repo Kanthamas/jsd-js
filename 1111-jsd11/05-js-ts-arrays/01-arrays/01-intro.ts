@@ -56,6 +56,7 @@ const newNums = [...nums, 4, 5];
 console.log(newNums); // [1, 2, 3, 4, 5] */
 
 // Rest Operator
-/* const [one, ...rest] = [1, 2, 3, 4, 5];
+const [one, ...rest] = [1, 2, 3, 4, 5];
 console.log(one); // 1
-console.log(rest); // [2, 3, 4, 5] */
+
+console.log(rest); // [2, 3, 4, 5]

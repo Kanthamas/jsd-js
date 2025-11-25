@@ -7,8 +7,13 @@ type Username = string;
 type Age = number;
 type IsValid = boolean;
 
+// const username5 = "john"
+// let username6: Age = "mean"
+// username6 = 555
+
 /* Union Types - choose ONE of these values */
 type Status = "success" | "error" | "loading";
+let displayStatus: Status = "loading";
 
 /* Object Type */
 type Member = {
@@ -19,13 +24,28 @@ type Member = {
 	message?: string;
 };
 
-/* Example */
-function addMemberMessage(member: Member): Member {
-	member.message = member.isActive
-		? `Welcome back, ${member.name}!`
-		: `${member.name}, please activate your account.`;
+type Member2 = {
+	name: string;
+	age?: number;
+	role?: string;
+};
 
-	return member;
+const mean: Member2 = {
+	name: "Mean",
+	role: "dev",
+};
+
+let members: Member[] = [];
+let myNumbers: number[] = [];
+myNumbers = [1, 2, 4];
+
+/* Example */
+function addMemberMessage(mem: Member): Member {
+	mem.message = mem.isActive
+		? `Welcome back, ${mem.name}!`
+		: `${mem.name}, please activate your account.`;
+
+	return mem;
 }
 
 const jane: Member = {
@@ -56,7 +76,12 @@ const divide: MathOperation = (a, b) => {
 	return a / b;
 };
 
-type DivideResult = { success: boolean; result?: number; message?: string };
+// console.log(divide( 10, 0))
+type DivideResult = {
+	success: boolean;
+	result?: number;
+	message?: string;
+};
 
 const divide2 = (a: number, b: number): DivideResult => {
 	if (b === 0) {
@@ -64,7 +89,7 @@ const divide2 = (a: number, b: number): DivideResult => {
 	}
 	return { success: true, result: a / b };
 };
-
+// console.log(divide2( 10, 0))
 /////////////////////////////////////////////////////
 
 /* Interfaces - An interface describes the shape of an object.*/
